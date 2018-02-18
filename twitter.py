@@ -14,9 +14,11 @@ class Twitter:
         if hasattr(tweet, 'retweeted_status'): return False
         if tweet.user.screen_name in self.ng_users: return False
         try:
-            print('user.name:' + tweet.user.name)
-            print('user.screen_name:' + tweet.user.screen_name)
-            print('tweet.text:' + tweet.text)
+            result = self.api.create_favorite(tweet.id)
+            print('user.name:' + result.user.name)
+            print('user.screen_name:' + result.user.screen_name)
+            print('tweet.id:' + str(result.id))
+            print('tweet.text:' + result.text)
             print('\n')
             return True
         except:
